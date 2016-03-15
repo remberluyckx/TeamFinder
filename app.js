@@ -1,3 +1,5 @@
+$( document ).ready(function() {
+///CHAT SYSTEM///
 var myDataRef = new Firebase('https://glowing-inferno-9012.firebaseio.com/');
 $('#messageInput').keypress(function (e) {
     if (e.keyCode == 13) {
@@ -9,12 +11,78 @@ $('#messageInput').keypress(function (e) {
         $('#messageInput').val('');
     }
 });
-// with the Firebase database, you always read data using callbacks
+
+// in Firebase, you always read data using callbacks
 myDataRef.on('child_added', function(snapshot) { // notify when chat messages arrive
     var message = snapshot.val();
     displayChatMessage(message.name, message.text);
 });
+
 function displayChatMessage(name, text) {
     $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
     $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
 };
+///////////////////
+
+    var email;
+    var password;
+///USER CREATION///
+$('#createBtn').click(function () {
+    email = $('#e-mailInput').val();
+    password = $('#passwordInput').val();
+    myDataRef.createUser({
+        email    : email,
+        password : password
+    }, function(error, userData) {
+        if (error) {
+            console.log("Error creating user:", error);
+        } else {
+            console.log("Successfully created user account with uid:", userData.uid);
+        }
+    });
+})
+///////////////////
+
+////USER LOGIN/////
+$('#loginBtn').click( function() {
+    myDataRef.authWithPassword({
+        email    : email,
+        password : password
+    }, function(error, authData) {
+        if (error) {
+            console.log("Login Failed!", error);
+        } else {
+            console.log("Authenticated successfully with payload:", authData);
+        }
+    });
+})
+///////////////////
+
+////USER DELETE////
+$('#deleteBtn').click( function() {
+    myDataRef.removeUser({
+        email    : email,
+        password : password
+    }, function(error) {
+        if (error === null) {
+            console.log("User removed successfully");
+        } else {
+            console.log("Error removing user:", error);
+        }
+    });
+})
+
+///Password reset///
+$('#forgotBtn').click(function () {
+    myDataRef.resetPassword({
+        email : email
+    }, function(error) {
+        if (error === null) {
+            console.log("Password reset email sent successfully");
+        } else {
+            console.log("Error sending password reset email:", error);
+        }
+    });
+})
+///////////////////
+});

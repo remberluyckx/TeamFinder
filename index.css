@@ -1,3 +1,10 @@
 body {
     background: cadetblue;
 }
+#chatSystemTest {
+    float: left;
+}
+#userManagementTest {
+    float: right;
+    margin-right: 300px;
+}
