@@ -45,6 +45,8 @@ $('#createBtn').click(function () {
 
 ////USER LOGIN/////
 $('#loginBtn').click( function() {
+    email = $('#e-mailInput').val();
+    password = $('#passwordInput').val();
     myDataRef.authWithPassword({
         email    : email,
         password : password
@@ -60,6 +62,8 @@ $('#loginBtn').click( function() {
 
 ////USER DELETE////
 $('#deleteBtn').click( function() {
+    email = $('#e-mailInput').val();
+    password = $('#passwordInput').val();
     myDataRef.removeUser({
         email    : email,
         password : password
@@ -71,9 +75,30 @@ $('#deleteBtn').click( function() {
         }
     });
 })
+///Password change///
+$('#changeBtn').click( function() {
+    email = $('#e-mailInput').val();
+    password = $('#passwordInput').val();
+    var newPass = $('#newPassInput').val();
+    myDataRef.changePassword({
+        email       : email,
+        oldPassword : password,
+        newPassword : newPass
+    }, function(error) {
+        if (error === null) {
+            console.log("Password changed successfully");
+            password = newPass;
+        } else {
+            console.log("Error changing password:", error);
+        }
+    });
+})
+////////////////////
 
 ///Password reset///
 $('#forgotBtn').click(function () {
+    email = $('#e-mailInput').val();
+    password = $('#passwordInput').val();
     myDataRef.resetPassword({
         email : email
     }, function(error) {
