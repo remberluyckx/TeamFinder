@@ -3,7 +3,7 @@ $( document ).ready(function() {
 var myDataRef = new Firebase('https://glowing-inferno-9012.firebaseio.com/');
     var chatRef = myDataRef.child("chatlog");
 $('#messageInput').keypress(function (e) {
-    if (e.keyCode == 13) {
+    if (e.keyCode == 13) { //keyCode 13 = enter
         var name = $('#nameInput').val();
         var text = $('#messageInput').val();
         //myDataRef.set('User ' + name + ' says ' + text);
@@ -119,7 +119,6 @@ $("#postBtn").click( function() {
     var description = $('#descriptionInput').val();
     var role = $('#roleInput').val();
 
-
     postRef.push({
             title: title,
             description: description,
@@ -127,14 +126,14 @@ $("#postBtn").click( function() {
     });
 })
 
-    postRef.on('child_added', function(snapshot) { // notify when chat messages arrive
+    postRef.on('child_added', function(snapshot) {
         var post = snapshot.val();
         displayPosts(post.title, post.description, post.role);
     });
 
     function displayPosts(title, description, role) {
-        $('<div/>').text(role).prepend($('<p/>').text(description)).prepend($('<h1/>').text(title+': ')).appendTo($('#postsDiv'));
-        $('#postsDiv')[0].scrollTop = $('#postsDiv')[0].scrollHeight;
+        $('<div/>').text("Looking for: " + role).prepend($('<p/>').text(description)).prepend($('<h1/>').text(title+': ')).appendTo($('#postsDiv'));
+        $('#postsDiv')[0].scrollTop = $('#postsDiv')[0].scrollHeight; //scrollbar wordt geplaatst bij eerste post op pagina
     };
 //////////////////
 });
