@@ -10,6 +10,7 @@ $scope.loginMail = "";
 $scope.loginPassword = "";
 $scope.username = "Guest";
 $scope.authMessage = "";
+var uID = "";
 
 $scope.register = function()  {
   ref.createUser({
@@ -34,7 +35,8 @@ $scope.login = function () {
       if (error) {
     console.log("Login Failed!", error);
   } else {
-    console.log("Authenticated successfully with payload:", authData);
+    uID = authData.uid;
+    console.log("Authenticated successfully with payload:" +uID, authData);
     $scope.username = $scope.loginMail;
   }
 });
@@ -45,7 +47,7 @@ $('#changeBtn').click( function() {
     email = $scope.loginMail;
     password = $scope.loginPassword;
     var newPass = $scope.newPassword;
-    myDataRef.changePassword({
+    ref.changePassword({
         email       : email,
         oldPassword : password,
         newPassword : newPass
@@ -78,7 +80,7 @@ $('#deleteBtn').click( function() {
 ///Password reset///
 $('#forgotBtn').click(function () {
     email = $scope.loginMail;
-    password = $scope.loginPassword
+    password = $scope.loginPassword;
     ref.resetPassword({
         email : email
     }, function(error) {
@@ -139,7 +141,7 @@ ref.on('child_added', function(snapshot) {
   
 });
 
-/*myDataRef.authWithOAuthPopup("github", function(error, authData) {
+/*ref.authWithOAuthPopup("github", function(error, authData) {
   if (error) {
     console.log("Login Failed!", error);
   } else {

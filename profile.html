@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="index.css">
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+</head>
+
+<body ng-app="myApp">
+<h1>Profile</h1>
+<div ng-controller ="appController">
+<p>Change profile settings</p>
+<input ng-model="firstName" type="text" placeholder="First name"></input>
+<input ng-model="lastName" type="text" placeholder="Last name"></input>
+<input ng-model="age" type="text" placeholder="Age"></input>
+
+<Button ng-click="saveProfile()">Save</Button>
+<Button><a href="index.html">Cancel </a></Button>
+<Button><a href="profile.html">Go to profile</a></Button>
+<button id="deleteBtn">Delete my account</button>
+        <br>
+        <input type="text" ng-model="newPassword" placeholder="New password"><br>
+<div>Welcome {{uID}}{{username}}</div>
+</div>
+
+<script src='app.js'></script>
+
+</body>
+</html>
