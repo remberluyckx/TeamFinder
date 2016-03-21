@@ -2,7 +2,7 @@ var app = angular.module("myApp", []);
 
 app.controller("appController", function ($scope) {
 
-//var myDataRef = new Firebase('https://glowing-inferno-9012.firebaseio.com/');
+//var ref = new Firebase('https://glowing-inferno-9012.firebaseio.com/');
 
 var ref = new Firebase("https://boiling-torch-9537.firebaseio.com");
 
@@ -11,6 +11,7 @@ $scope.loginPassword = "";
 $scope.username = "Guest";
 $scope.authMessage = "";
 var uID = "";
+console.log("uid: " + ref.auth.uid);
 
 $scope.register = function()  {
   ref.createUser({
@@ -27,11 +28,14 @@ $scope.register = function()  {
   console.log("Login-password: " + $scope.loginPassword)
 }
 
+
+//Login
 $scope.login = function () {
   ref.authWithPassword({
     email: $scope.loginMail,
     password: $scope.loginPassword
-  }, function(error, authData) {
+  },
+   function(error, authData) {
       if (error) {
     console.log("Login Failed!", error);
   } else {
@@ -92,11 +96,10 @@ $('#forgotBtn').click(function () {
     });
 })
 
-///////////////////
 
 ////Post system////
-    var postRef = myDataRef.child("posts");
-$("#postBtn").click( function() {
+    var postRef = ref.child("posts");
+    $("#postBtn").click( function() {
     var title = $('#titleInput').val();
     var description = $('#descriptionInput').val();
     var role = $('#roleInput').val();
@@ -117,8 +120,7 @@ $("#postBtn").click( function() {
         $('<div/>').text("Looking for: " + role).prepend($('<p/>').text(description)).prepend($('<h1/>').text(title+': ')).appendTo($('#postsDiv'));
         $('#postsDiv')[0].scrollTop = $('#postsDiv')[0].scrollHeight; //scrollbar wordt geplaatst bij eerste post op pagina
     };
-//////////////////
-});
+
 
 // Chat system //
 
@@ -138,8 +140,7 @@ ref.on('child_added', function(snapshot) {
         $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
       };
-  
-});
+ });
 
 /*ref.authWithOAuthPopup("github", function(error, authData) {
   if (error) {
