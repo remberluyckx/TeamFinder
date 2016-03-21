@@ -8,3 +8,8 @@ body {
     float: right;
     margin-right: 300px;
 }
+#postTest {
+    float: left;
+    clear: both;
+    margin-top: 40px;
+}
