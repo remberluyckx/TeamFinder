@@ -112,7 +112,29 @@ $('#forgotBtn').click(function () {
 })
 ///////////////////
 
-///Post system////
+////Post system////
+    var postRef = myDataRef.child("posts");
+$("#postBtn").click( function() {
+    var title = $('#titleInput').val();
+    var description = $('#descriptionInput').val();
+    var role = $('#roleInput').val();
 
+
+    postRef.push({
+            title: title,
+            description: description,
+            role: role
+    });
+})
+
+    postRef.on('child_added', function(snapshot) { // notify when chat messages arrive
+        var post = snapshot.val();
+        displayPosts(post.title, post.description, post.role);
+    });
+
+    function displayPosts(title, description, role) {
+        $('<div/>').text(role).prepend($('<p/>').text(description)).prepend($('<h1/>').text(title+': ')).appendTo($('#postsDiv'));
+        $('#postsDiv')[0].scrollTop = $('#postsDiv')[0].scrollHeight;
+    };
 //////////////////
 });

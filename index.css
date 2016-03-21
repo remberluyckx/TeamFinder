@@ -13,3 +13,7 @@ body {
     clear: both;
     margin-top: 40px;
 }
+#postsDiv {
+    float: left;
+    clear: both;
+}
