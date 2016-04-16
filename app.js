@@ -11,7 +11,10 @@ $scope.loginPassword = "";
 $scope.username = "Guest";
 $scope.authMessage = "";
 var uID = "";
-console.log("uid: " + ref.auth.uid);
+if(ref.getAuth()){
+  uID = ref.getAuth().uid;
+}
+console.log("uid", uID);
 
 $scope.register = function()  {
   ref.createUser({
@@ -32,6 +35,7 @@ $scope.register = function()  {
 //Login
 $scope.login = function () {
   ref.authWithPassword({
+    remember: "sessionOnly",
     email: $scope.loginMail,
     password: $scope.loginPassword
   },
@@ -41,6 +45,7 @@ $scope.login = function () {
   } else {
     uID = authData.uid;
     console.log("Authenticated successfully with payload:" +uID, authData);
+    console.log("uid: " + uID);
     $scope.username = $scope.loginMail;
   }
 });
