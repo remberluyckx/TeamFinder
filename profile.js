@@ -19,7 +19,7 @@ var uID = authData.uid;
 console.log("uid:" , uID);
 
 // get logged in user
-usersRef.orderByChild("uid").equalTo(uID.toString()).on("child_added", function(snapshot){
+/*usersRef.orderByChild("uid").equalTo(uID.toString()).on("child_added", function(snapshot){
 		key = snapshot.key();
 		console.log("in here");
 		$scope.user = snapshot.val();
@@ -30,7 +30,7 @@ usersRef.orderByChild("uid").equalTo(uID.toString()).on("child_added", function(
 	}
 		
 		//$scope.$digest();
-	}); 
+	}); */
 
 
 	$scope.$watch("user",function(newValue,oldValue) {
@@ -99,5 +99,25 @@ console.log("key: ", key);
 				}
 	//	});			
 }
-//getUserName();
+$scope.removeProfile = function(){
+	usersRef.child(key).remove();
+}
+
+$scope.deleteAccount = function(){
+	email = ref.getAuth().password.email;	 
+    password = $scope.loginPassword;
+    ref.removeUser({
+        email    : email,
+        password : password
+    }, function(error) {
+        if (error === null) {
+        	usersRef.child(key).remove();
+            console.log("User removed successfully");
+        } else {
+            console.log("Error removing user:", error);
+        }
+    });
+}
+
+getUserName();
 });

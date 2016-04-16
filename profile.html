@@ -13,6 +13,7 @@
 <body ng-app="myProfile">
 <h1>Profile</h1>
 <div ng-controller ="profileController">
+<div>Welcome {{username}}</div>
 <p>Change profile settings</p>
 <div >
     <input ng-model="user.first_name" type="text" placeholder="First name"></input>
@@ -30,11 +31,17 @@
 <Button ng-click="saveProfile()">Save</Button>
 <Button><a href="index.html">Cancel </a></Button>
 <Button><a href="profile.html">Go to profile</a></Button>
-<button id="deleteBtn">Delete my account</button>
-        <br>
-<Button ng-click="showUserName()">Show name</Button>
-        <input type="text" ng-model="newPassword" placeholder="New password"><br>
-<div>Welcome {{username}}</div>
+<br/>
+<button ng-click="deleteAccount()">Delete my account</button>
+        <br/>
+<input type="text" ng-model="loginPassword" placeholder="password"></input>
+    <br/>
+    <button ng-click="removeProfile()">Remove profile</button>
+        <br/>
+<Button ng-click="showUserName()">Show name</Button><br/>
+<Button ng-click="changePassword()">Change password</Button>
+<input type="text" ng-model="newPassword" placeholder="New password"><br>
+
 </div>
 
 
