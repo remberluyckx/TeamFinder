@@ -25,6 +25,10 @@ $scope.register = function()  {
     console.log("Error creating user:", error);
   } else {
     console.log("Successfully created user account with uid:", userData.uid);
+    ref.child("users").push({
+            uid: userData.uid
+        });
+        console.log("saved new empty profile");
   }
 });
   console.log("Login-mail: " + $scope.loginMail);
