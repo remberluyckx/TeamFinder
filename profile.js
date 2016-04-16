@@ -9,8 +9,8 @@ var key = null;
 var pageLoaded = true;
 $scope.user;
 $scope.username;
-$scope.firstName;
-$scope.lastName;
+$scope.firstName ;
+$scope.lastName ;
 
 
 var authData = ref.getAuth();
@@ -19,16 +19,18 @@ var uID = authData.uid;
 console.log("uid:" , uID);
 
 // get logged in user
-/*usersRef.orderByChild("uid").equalTo(uID.toString()).on("child_added", function(snapshot){
+usersRef.orderByChild("uid").equalTo(uID.toString()).on("child_added", function(snapshot){
 		key = snapshot.key();
+		console.log("in here");
 		$scope.user = snapshot.val();
 		if($scope.user){
 		$scope.username =  $scope.user.first_name + " " + $scope.user.last_name;
-	}
 		console.log("snapshot: " , $scope.user);
 		console.log("username: ", $scope.username);		
-		$scope.$digest();
-	}); */
+	}
+		
+		//$scope.$digest();
+	}); 
 
 
 	$scope.$watch("user",function(newValue,oldValue) {
@@ -66,7 +68,9 @@ $scope.showUserName = function(){
 
 
 // push/set userData
-$scope.saveProfile = function(){	
+$scope.saveProfile = function(){
+console.log("firstname: ", $scope.user.first_name);	
+console.log("key: ", key);
 	//$scope.user.uid;
 
 	//usersRef.orderByChild("uid").equalTo(uID.toString()).on("child_added", function(snapshot){
@@ -85,7 +89,8 @@ $scope.saveProfile = function(){
 				}
 				else {
 					//console.log("key: ", key)
-					usersRef.child(key).set({						
+					usersRef.child(key).set({	
+						uid: $scope.user.uid,					
 						first_name: $scope.user.first_name,
 						last_name: $scope.user.last_name,
 						specialty: $scope.user.specialty
@@ -94,5 +99,5 @@ $scope.saveProfile = function(){
 				}
 	//	});			
 }
-getUserName();
+//getUserName();
 });
