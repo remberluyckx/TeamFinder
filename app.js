@@ -5,14 +5,28 @@ app.controller("appController", function ($scope) {
 //var ref = new Firebase('https://glowing-inferno-9012.firebaseio.com/');
 
 var ref = new Firebase("https://boiling-torch-9537.firebaseio.com");
+var usersRef = ref.child("users");
 
 $scope.loginMail = "";
 $scope.loginPassword = "";
 $scope.username = "Guest";
 $scope.authMessage = "";
 var uID = "";
+
+var getUserName = function(){
+  usersRef.orderByChild("uid").equalTo(uID.toString()).on("child_added", function(snapshot){
+    key = snapshot.key();
+    $scope.user = snapshot.val();
+    if($scope.user){
+      $scope.username =  $scope.user.first_name + " " + $scope.user.last_name;  
+      $scope.$digest();
+    }
+    });     
+}
 if(ref.getAuth()){
   uID = ref.getAuth().uid;
+  getUserName();
+  console.log("user email:", ref.getAuth().password.email);
 }
 console.log("uid", uID);
 
@@ -25,7 +39,7 @@ $scope.register = function()  {
     console.log("Error creating user:", error);
   } else {
     console.log("Successfully created user account with uid:", userData.uid);
-    ref.child("users").push({
+    usersRef.push({
             uid: userData.uid
         });
         console.log("saved new empty profile");
@@ -50,11 +64,12 @@ $scope.login = function () {
     uID = authData.uid;
     console.log("Authenticated successfully with payload:" +uID, authData);
     console.log("uid: " + uID);
-    $scope.username = $scope.loginMail;
+    getUserName();
   }
 });
   
 }
+
 ///Password change///
 $('#changeBtn').click( function() {
     email = $scope.loginMail;
@@ -75,7 +90,7 @@ $('#changeBtn').click( function() {
 })
 
 ////USER DELETE////
-$('#deleteBtn').click( function() {
+/*$('#deleteBtn').click( function() {
     email = $scope.loginMail;
     password = $scope.loginPassword;
     ref.removeUser({
@@ -88,7 +103,7 @@ $('#deleteBtn').click( function() {
             console.log("Error removing user:", error);
         }
     });
-})
+}) */
 
 ///Password reset///
 $('#forgotBtn').click(function () {
