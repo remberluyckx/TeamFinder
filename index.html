@@ -4,40 +4,66 @@
     <meta charset="UTF-8">
     <title>TeamFinder</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
 </head>
 
-<body ng-app="myApp">
-<h1>Team Finder</h1>
-<div ng-controller ="appController">
-<p>Welcome to the best team finding tool ever created</p>
-<Button ng-click="login()">Login</Button>
-<Button ng-click="register()" >Register</Button>
-<Button><a href="profile.html">Go to profile</a></Button>
-<button><a href="post.html">Create a post</a></button>
-        <button id="forgotBtn">Forgot password</button><br>
-        <input type="text" ng-model="newPassword" placeholder="New password"><br>
-        <button id="changeBtn">Change my password</button>
+<body ng-app="myApp" class="main">
+		<div ng-controller="appController">
+			
+			<nav class="navbar navbar">
+  				<div class="container-fluid">
+    				<div class="navbar-header">
+      					<a class="navbar-brand" href="index.html">Team Assembler</a>
+    				</div>
+				    <ul class="nav navbar-nav">
+				      <li class="active"><a href="#">LOGIN</a></li>
+				      <li><a href="#">PROJECTS</a></li>
+				      <li><a href="post.html">POST</a></li> 
+				      <li><a href="profile.html">PROFILE</a></li>
+				      <li><a href="#">SETTINGS</a></li> 
+				    </ul>
+  				</div>
+			</nav>
 
 
+			<div class="wrapper">
+				<h1 class="title">Team Assembler</h1>
+				
+				<form class="form-signin">
+					<h2 class="form-signin-heading">Please login</h2>
+					<input  ng-model="user" type="text" class="form-control"  placeholder="Email Address" required="" autofocus=""></input>
+					<input ng-model="pass" type="password" class="form-control"  placeholder="Password" required="" />      
+      				<label class="checkbox">
+        			<input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+      				</label>
+      				<button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="login()">Login</button>
+      				<Button class="btn btn-lg btn-primary btn-block" ng-click="register()" >Register</Button>
+					
+        			<button id="forgotBtn">Forgot password</button><br>
+        			<input type="text" ng-model="newPassword" placeholder="New password"><br>
+       				<button id="changeBtn">Change my password</button>
+       				<input type="text" ng-model="loginMail" placeholder="E-mail address"></input>
+					<input type="text" ng-model="loginPassword" placeholder="password"></input>
+					<input type='text' id='nameInput' placeholder='Name'>
+					<input type='text' id='messageInput' placeholder='Message'>
 
-<input type="text" ng-model="loginMail" placeholder="E-mail address"></input>
-<input type="text" ng-model="loginPassword" placeholder="password"></input>
-<input type='text' id='nameInput' placeholder='Name'>
-<input type='text' id='messageInput' placeholder='Message'>
-<p>{{authMessage}}</p>
-<div>Welcome {{username}}</div>
-<div id='messagesDiv'></div>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="4WFTM26S2JX5Q">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
+				</form>
+			</div>
+		</div>
 
-</div>
+		<div class="chat">
+			<p>{{authMessage}}</p>
+			<div>Welcome {{username}}</div>
+			<div id='messagesDiv'></div>
+		</div>
+	</body>
+
 
 <script src='app.js'></script>
 

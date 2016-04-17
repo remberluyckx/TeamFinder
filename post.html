@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>Post</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="post.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
@@ -11,8 +14,23 @@
 </head>
 
 <body ng-app="myPost">
+
+<nav class="navbar navbar">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="index.html">Team Assembler</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                      <li class="active"><a href="#">LOGIN</a></li>
+                      <li><a href="#">PROJECTS</a></li>
+                      <li><a href="post.html">POST</a></li> 
+                      <li><a href="profile.html">PROFILE</a></li>
+                      <li><a href="#">SETTINGS</a></li> 
+                    </ul>
+                </div>
+            </nav>
 <h1>Post</h1>
-<div ng-controller ="postController">
+<div class="main" ng-controller ="postController">
 
     <div id="postCreate">
         <label>Create a post</label><br>
