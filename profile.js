@@ -71,6 +71,9 @@ $scope.showUserName = function(){
 $scope.saveProfile = function(){
 console.log("firstname: ", $scope.user.first_name);	
 console.log("key: ", key);
+if($scope.user.first_name === null ) $scope.user.first_name = "";
+if($scope.user.last_name === null ) $scope.user.last_name = "";
+if($scope.user.specialty === null) $scope.user.specialty = "";
 	//$scope.user.uid;
 
 	//usersRef.orderByChild("uid").equalTo(uID.toString()).on("child_added", function(snapshot){
@@ -95,6 +98,7 @@ console.log("key: ", key);
 						last_name: $scope.user.last_name,
 						specialty: $scope.user.specialty
 					});
+	
 					console.log("updated profile");
 				}
 	//	});			
