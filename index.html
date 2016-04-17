@@ -24,10 +24,18 @@
 				    <ul class="nav navbar-nav">
 				      <li class="active"><a href="#">LOGIN</a></li>
 				      <li><a href="#">PROJECTS</a></li>
-				      <li><a href="post.html">POST</a></li> 
-				      <li><a href="profile.html">PROFILE</a></li>
-				      <li><a href="#">SETTINGS</a></li> 
+				      <li><a ng-if="user" href="post.html">POST</a></li> 
+				      <li ng-if="user"><a href="profile.html">PROFILE</a></li>
+				      <li><a href="#">SETTINGS</a></li> 				      
+				      <li id="loginStatus" ng-if="first_name" ng-if="last_name"><p>Logged in as: {{username}}</p></li>
+				      <li id="loginStatus" ng-if="first_name==null"><p>Update your <a href="profile.html"> profile </a></p></li>
 				    </ul>
+				    <div class="loginStatus">
+				    	<p ng-if="username">Logged in as: {{username}}</p>
+				      	<p ng-if="username==null">Update your <a href="profile.html"> profile </a></p>
+				      	<a href="#" ng-click="logout()"><p ng-if="user">Logout</p></a>
+				    </div>
+				      
   				</div>
 			</nav>
 
@@ -55,7 +63,7 @@
 
 				</form>
 			</div>
-		</div>
+	
 
 		<div class="chat">
 			<p>{{authMessage}}</p>
@@ -69,7 +77,7 @@
 		<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 		<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 		</form>
-
+	</div>
 	</body>
 
 
