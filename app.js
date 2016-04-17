@@ -9,8 +9,11 @@ var usersRef = ref.child("users");
 
 $scope.loginMail = "";
 $scope.loginPassword = "";
-$scope.username = "Guest";
+$scope.username = "guest";
 $scope.authMessage = "";
+
+$scope.uid = "";
+
 var uID = "";
 
 var getUserName = function(){
@@ -25,6 +28,7 @@ var getUserName = function(){
 }
 if(ref.getAuth()){
   uID = ref.getAuth().uid;
+  $scope.uid = uID;
   getUserName();
   console.log("user email:", ref.getAuth().password.email);
 }
@@ -64,10 +68,19 @@ $scope.login = function () {
     uID = authData.uid;
     console.log("Authenticated successfully with payload:" +uID, authData);
     console.log("uid: " + uID);
+    $scope.$digest();
     getUserName();
   }
-});
-  
+});  
+  //$scope.$digest();
+}
+
+//logout
+$scope.logout = function(){
+  ref.unauth();
+  $scope.user = null;
+  $scope.username = "guest";
+  console.log("logged out");
 }
 
 ///Password change///
