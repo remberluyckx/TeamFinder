@@ -26,9 +26,7 @@
 				      <li><a href="#">PROJECTS</a></li>
 				      <li><a ng-if="user" href="post.html">POST</a></li> 
 				      <li ng-if="user"><a href="profile.html">PROFILE</a></li>
-				      <li><a href="#">SETTINGS</a></li> 				      
-				      <li id="loginStatus" ng-if="first_name" ng-if="last_name"><p>Logged in as: {{username}}</p></li>
-				      <li id="loginStatus" ng-if="first_name==null"><p>Update your <a href="profile.html"> profile </a></p></li>
+				      <li><a href="#">SETTINGS</a></li> 				      				      
 				    </ul>
 				    <div class="loginStatus">
 				    	<p ng-if="username">Logged in as: {{username}}</p>
