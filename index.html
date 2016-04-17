@@ -16,6 +16,7 @@
 <Button ng-click="login()">Login</Button>
 <Button ng-click="register()" >Register</Button>
 <Button><a href="profile.html">Go to profile</a></Button>
+<button><a href="post.html">Create a post</a></button>
         <button id="forgotBtn">Forgot password</button><br>
         <input type="text" ng-model="newPassword" placeholder="New password"><br>
         <button id="changeBtn">Change my password</button>
@@ -31,22 +32,6 @@
 <div id='messagesDiv'></div>
 </div>
 
-    <div id="postTest">
-        <label>Create a post</label><br>
-        <input type="text" id="titleInput" placeholder="Title"><br>
-        <textarea type="text" id="descriptionInput" placeholder="Description" rows="4" cols="50"></textarea><br>
-        <label>I'm looking for a:</label>
-        <select id="roleInput">
-            <option value=".Net_Programmer">.Net Programmer</option>
-            <option value="Database_expert">Database expert</option>
-            <option value="Designer">Graphic designer</option>
-            <option value="Marketer">Marketer</option>
-            <option value="Database_expert">Web designer</option>
-        </select>
-        <br><button id="postBtn">Post!</button>
-    </div>
-
-    <div id="postsDiv"></div>
 <script src='app.js'></script>
 
 </body>

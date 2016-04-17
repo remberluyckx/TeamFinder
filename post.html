@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post</title>
+    <link rel="stylesheet" href="index.css">
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+    <script src='post.js'></script>
+</head>
+
+<body ng-app="myPost">
+<h1>Post</h1>
+<div ng-controller ="postController">
+
+    <div id="postCreate">
+        <label>Create a post</label><br>
+        <input type="text" ng-model="titleInput" placeholder="Title"><br>
+        <textarea type="text" ng-model="descriptionInput" placeholder="Description" rows="4" cols="50"></textarea><br>
+        <label>I'm looking for a:</label>
+        <select ng-model="roleInput">
+            <option value=".Net_programmer">.Net Programmer</option>
+            <option value="Database_expert">Database expert</option>
+            <option value="Graphic_designer">Graphic designer</option>
+            <option value="Marketer">Marketer</option>
+            <option value="Web_designer">Web designer</option>
+        </select>
+        <br><button ng-click="createPost()">Post!</button>
+    </div>
+
+    <div id="postsDiv"></div>
+</div>
+</body>
+</html>

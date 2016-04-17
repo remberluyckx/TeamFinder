@@ -120,32 +120,6 @@ $('#forgotBtn').click(function () {
     });
 })
 
-
-////Post system////
-    var postRef = ref.child("posts");
-    $("#postBtn").click( function() {
-    var title = $('#titleInput').val();
-    var description = $('#descriptionInput').val();
-    var role = $('#roleInput').val();
-
-    postRef.push({
-            title: title,
-            description: description,
-            role: role
-    });
-})
-
-    postRef.on('child_added', function(snapshot) {
-        var post = snapshot.val();
-        displayPosts(post.title, post.description, post.role);
-    });
-
-    function displayPosts(title, description, role) {
-        $('<div/>').text("Looking for: " + role).prepend($('<p/>').text(description)).prepend($('<h1/>').text(title+': ')).appendTo($('#postsDiv'));
-        $('#postsDiv')[0].scrollTop = $('#postsDiv')[0].scrollHeight; //scrollbar wordt geplaatst bij eerste post op pagina
-    };
-
-
 // Chat system //
 
 $('#messageInput').keypress(function (e) {
