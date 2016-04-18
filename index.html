@@ -55,10 +55,7 @@
         			<input type="text" ng-model="newPassword" placeholder="New password"><br>
        				<button id="changeBtn">Change my password</button>
        				<input type="text" ng-model="loginMail" placeholder="E-mail address"></input>
-					<input type="text" ng-model="loginPassword" placeholder="password"></input>
-					<input type='text' id='nameInput' placeholder='Name'>
-					<input type='text' id='messageInput' placeholder='Message'>
-
+					<input type="text" ng-model="loginPassword" placeholder="password"></input>			
 				</form>
 			</div>
 	
@@ -66,6 +63,7 @@
 		<div class="chat">
 			<p>{{authMessage}}</p>
 			<div>Welcome {{username}}</div>
+			<input type='text' id='messageInput' placeholder='Message'></input>
 			<div id='messagesDiv'></div>
 		</div>
 

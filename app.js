@@ -6,6 +6,7 @@ app.controller("appController", function ($scope) {
 
 var ref = new Firebase("https://boiling-torch-9537.firebaseio.com");
 var usersRef = ref.child("users");
+var chatRef = ref.child("chat");
 
 $scope.loginMail = "";
 $scope.loginPassword = "";
@@ -136,14 +137,13 @@ $('#forgotBtn').click(function () {
 // Chat system //
 
 $('#messageInput').keypress(function (e) {
-        if (e.keyCode == 13) {
-          var name = $('#nameInput').val();
-          var text = $('#messageInput').val();
-          ref.push({name:name, text:text});
+        if (e.keyCode == 13 && $('#messageInput').val() != "") {          
+          var text = $('#messageInput').val();                    
+          chatRef.push({name:$scope.username, text:text});
           $('#messageInput').val('');
         }
       });
-ref.on('child_added', function(snapshot) {
+chatRef.limitToLast(6).on('child_added', function(snapshot) {
          var message = snapshot.val();
         displayChatMessage(message.name, message.text);
       });
@@ -159,7 +159,7 @@ ref.on('child_added', function(snapshot) {
   } else {
     console.log("Authenticated successfully with payload:", authData);
   }
-}, {
+}, {  
     remember: "sessionOnly",
       scope: "user"
 }); */
