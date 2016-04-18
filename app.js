@@ -1,3 +1,21 @@
+/////Facebook API//////
+window.fbAsyncInit = function() {
+    FB.init({
+        appId      : '2050929358466509',
+        xfbml      : true,
+        version    : 'v2.6'
+    });
+};
+
+(function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+///////////////////////
+
 var app = angular.module("myApp", []);
 
 app.controller("appController", function ($scope) {
