@@ -19,6 +19,10 @@
     border: 1px solid black;
     margin-top: 10px;
 }
+#projectsDiv div {
+    border: 1px solid black;
+    margin-top: 10px;
+}
 .loginStatus {
     float: right;
 }
