@@ -1,0 +1,72 @@
+.main{background-color: 
+#1c3f5e}
+.navbar
+{
+	background-color:	#1c5e5c;
+	border: 1px solid 	#5e1c1e;
+}
+
+.navbar li{color:#1c5e5c; }
+
+.title
+{
+	text-align: center;
+	color: 	#5e1c1e;
+	text-shadow:-1px 0 #ad8dae, 0 2px #ad8dae, 1px 0 #ad8dae, 0 -1px #ad8dae;
+	padding: 5%;
+	font-weight: bolder;
+	font-family: 'Raleway',sans-serif;
+}
+.wrapper {	
+	margin-top: 5px;
+  	margin-bottom: 50px;
+}
+.form-signin {
+  max-width: 380px;
+  padding: 15px 25px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.1); 
+  border: 1px solid black;
+ 
+
+  .form-signin-heading,
+	.checkbox {
+	  margin-bottom: 30px;
+	}
+.checkbox {
+	  font-weight: normal;
+	}
+
+	.form-control {
+	  position: relative;
+	  font-size: 16px;
+	  height: auto;
+	  padding: 10px;
+		@include box-sizing(border-box);
+
+		&:focus {
+		  z-index: 2;
+		}
+	}
+
+	input[type="text"] {
+	  margin-bottom: -1px;
+	  border-bottom-left-radius: 0;
+	  border-bottom-right-radius: 0;
+	}
+
+	input[type="password"] {
+	  margin-bottom: 20px;
+	  border-top-left-radius: 0;
+	  border-top-right-radius: 0;
+	}
+}
+.chat{
+	background-color: #fff;
+	width: 15%;
+	border: 2px solid black;
+	position: fixed;
+	right: 0%;
+	bottom: 0%;
+}
