@@ -1,20 +1,3 @@
-function onSignIn(googleUser) {
-  console.log("in google sign in function");
-              // Useful data for your client-side scripts:
-              var profile = googleUser.getBasicProfile();
-              console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-              console.log('Full Name: ' + profile.getName());
-              console.log('Given Name: ' + profile.getGivenName());
-              console.log('Family Name: ' + profile.getFamilyName());
-              console.log("Image URL: " + profile.getImageUrl());
-              console.log("Email: " + profile.getEmail());
-
-              // The ID token you need to pass to your backend:
-              var id_token = googleUser.getAuthResponse().id_token;
-              console.log("ID Token: " + id_token);
-};
-
-
 var app = angular.module("myApp", []);
 
 app.controller("appController", function ($scope) {
@@ -168,6 +151,24 @@ chatRef.limitToLast(6).on('child_added', function(snapshot) {
         $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
       };
+
+// Google signin 
+
+function onSignIn(googleUser) {
+  console.log("in google sign in function");
+              // Useful data for your client-side scripts:
+              var profile = googleUser.getBasicProfile();
+              console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+              console.log('Full Name: ' + profile.getName());
+              console.log('Given Name: ' + profile.getGivenName());
+              console.log('Family Name: ' + profile.getFamilyName());
+              console.log("Image URL: " + profile.getImageUrl());
+              console.log("Email: " + profile.getEmail());
+
+              // The ID token you need to pass to your backend:
+              var id_token = googleUser.getAuthResponse().id_token;
+              console.log("ID Token: " + id_token);
+};
 
     /////Facebook API//////
 
