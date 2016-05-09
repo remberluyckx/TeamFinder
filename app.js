@@ -184,6 +184,7 @@ app.controller("appController", function ($scope) {
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
+    //Facebook login
     $scope.fblogin = function () {
         //var ref = new Firebase("https://boiling-torch-9537.firebaseio.com");
         ref.authWithOAuthPopup("facebook", function (error, authData) {
@@ -191,10 +192,9 @@ app.controller("appController", function ($scope) {
                 console.log("Login Failed!", error);
             } else {
                 console.log("Authenticated successfully with payload:", authData);
-                console.log(authData.facebook.cachedUserProfile.first_name);
                 uID = authData.uid;
                 if (checkIfRegistered(uID) === false) {
-                    addFacebookUser(authData.facebook.cachedUserProfile);
+                    addFacebookUser(authData.facebook);
                     console.log("added account");
                 }
                 else {
@@ -204,6 +204,8 @@ app.controller("appController", function ($scope) {
                 getUser();
                 $scope.$apply();
             }
+        }, {
+            scope: "email" // the permissions requested
         });
     }
 
@@ -250,8 +252,8 @@ app.controller("appController", function ($scope) {
     var addFacebookUser = function (profile) {
         usersRef.push({
 
-            first_name: profile.first_name,
-            last_name: profile.last_name,
+            first_name: profile.cachedUserProfile.first_name,
+            last_name: profile.cachedUserProfile.last_name,
             email: profile.email,
             uid: uID
         })
