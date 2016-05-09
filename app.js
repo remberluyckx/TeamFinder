@@ -27,11 +27,28 @@ var getUserName = function(){
     }
     });     
 }
+
+var getUser = function(){
+  usersRef.orderByChild("uid").equalTo(uID.toString()).on("child_added", function(snapshot){
+    key = snapshot.key();
+    $scope.user = snapshot.val();
+  });
+}
+
+
+var checkIfRegistered =  function (uID) {
+  usersRef.orderByChild("uid").equalTo(uID).on("child_added", function(snapshot){
+    console.log("user already exists");
+    //uID = snapshot.val().uid; 
+    return true;
+  })    
+}
+
 if(ref.getAuth()){
   uID = ref.getAuth().uid;
   $scope.uid = uID;
   getUserName();
-  console.log("user email:", ref.getAuth().password.email);
+  console.log("user email:", ref.getAuth().email);
 }
 console.log("uid", uID);
 
@@ -45,7 +62,8 @@ $scope.register = function()  {
   } else {
     console.log("Successfully created user account with uid:", userData.uid);
     usersRef.push({
-            uid: userData.uid
+            uid: userData.uid,
+            email: $scope.loginMail
         });
         console.log("saved new empty profile");
   }
@@ -53,7 +71,6 @@ $scope.register = function()  {
   console.log("Login-mail: " + $scope.loginMail);
   console.log("Login-password: " + $scope.loginPassword)
 }
-
 
 //Login
 $scope.login = function () {
@@ -82,6 +99,11 @@ $scope.logout = function(){
   $scope.user = null;
   $scope.username = "guest";
   console.log("logged out");
+  // google sign out
+  var auth2 = gapi.auth2.getAuthInstance();
+  auth2.signOut().then(function () {
+      console.log('User signed out.');
+  });
 }
 
 ///Password change///
@@ -153,22 +175,45 @@ chatRef.limitToLast(6).on('child_added', function(snapshot) {
       };
 
 // Google signin 
+$scope.googleLogin = function() {
 
-function onSignIn(googleUser) {
-  console.log("in google sign in function");
-              // Useful data for your client-side scripts:
-              var profile = googleUser.getBasicProfile();
-              console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-              console.log('Full Name: ' + profile.getName());
-              console.log('Given Name: ' + profile.getGivenName());
-              console.log('Family Name: ' + profile.getFamilyName());
-              console.log("Image URL: " + profile.getImageUrl());
-              console.log("Email: " + profile.getEmail());
+              console.log("in google sign in function");
 
-              // The ID token you need to pass to your backend:
-              var id_token = googleUser.getAuthResponse().id_token;
-              console.log("ID Token: " + id_token);
+              ref.authWithOAuthPopup("google", function(error, authData) {
+              if (error) {
+                console.log("Login Failed!", error);
+              } else {
+                console.log("Authenticated successfully with payload:", authData);
+                uID = authData.uid;
+                if(checkIfRegistered(uID) === false){
+                  addGoogleUser(authData.google.cachedUserProfile);                
+                }
+                $scope.username = authData.google.displayName;
+                  
+                getUser();
+                $scope.$apply();
+               // getGoogleUserName();
+              }
+                         
+            },
+            {
+              remember: "sessionOnly",
+              scope:"email"
+            }
+
+            );
+        
 };
+var addGoogleUser = function(profile){
+  usersRef.push({
+
+        first_name: profile.given_name,
+        last_name: profile.family_name,
+        email: profile.email,
+        uid: uID
+  })
+  console.log("User created");
+}
 
     /////Facebook API//////
 

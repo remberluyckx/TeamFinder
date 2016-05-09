@@ -11,7 +11,7 @@
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
-    <meta name="google-signin-scope" content="profile email">
+    
     <meta name="google-signin-client_id" content="507749802408-tfhg18de0g0ib10i4dug7a3r5gpunrli.apps.googleusercontent.com">    
      <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
@@ -34,7 +34,7 @@
 				    <div class="loginStatus">
 				    	<p ng-if="username">Logged in as: {{username}}</p>
 				      	<p ng-if="username==null">Update your <a href="profile.html"> profile </a></p>
-				      	<a href="#" ng-click="logout()"><p ng-if="user">Logout</p></a>
+				      	<a href="#" ng-click="logout()"><p >Logout</p></a>
 				    </div>
 				      
   				</div>
@@ -53,7 +53,7 @@
       				</label>
       				<button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="login()">Login</button>
       				<Button class="btn btn-lg btn-primary btn-block" ng-click="register()" >Register</Button>
-      				<div class="g-signin2" data-onsuccess="onSignIn" data-theme="light"></div>
+      				<button ng-click="googleLogin()" >Google sign in</button>
 			</div>
 
 
