@@ -43,14 +43,14 @@
 			<div class="wrapper">
 				<h1 class="title">Team Assembler</h1>
 				
-				<form class="form-signin">
+				<form class="form-signin" action="projects.html">
 					<h2 class="form-signin-heading">Please login</h2>
 					<input  ng-model="loginMail" type="text" class="form-control"  placeholder="Email Address" required="" autofocus=""></input>
 					<input ng-model="loginPassword" type="password" class="form-control"  placeholder="Password" required="" />      
       				<label class="checkbox">
         			<input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
       				</label>
-      				<button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="login()">Login</button>
+      				<input class="btn btn-lg btn-primary btn-block" type="submit" ng-click="login()" value="Login"></input>
       				<Button class="btn btn-lg btn-primary btn-block" ng-click="register()" >Register</Button>
       				<button ng-click="googleLogin()" >Google sign in</button>
 					<button ng-click="fblogin()">Fb login</button>
