@@ -2,20 +2,35 @@
 
 var app = angular.module("myPost", []);
 
-app.controller("postController", function ($scope) {
+app.controller("postController", ['$scope', function ($scope) {
     var ref = new Firebase("https://boiling-torch-9537.firebaseio.com");
     var usersRef = ref.child("users");
 
     $scope.titleInput = "";
     $scope.descriptionInput = "";
     $scope.roleInput = "";
+    $scope.posts = [];
 
+    //tabs voor navigatie
+
+
+   
     var authData = ref.getAuth();
     var uID = authData.uid;
 
     console.log("uid:" , uID);
 
     var postRef = ref.child("posts");
+    
+    var countPosts = function()
+    {   
+        var counter = 0;
+        postRef.orderByChild("uID").equalTo(uID.toString()).on("child_added", function(snapshot)
+        {
+            counter++;
+        });
+        return counter;
+    };
 
     $scope.createPost = function(){
 
@@ -23,19 +38,22 @@ app.controller("postController", function ($scope) {
             title: $scope.titleInput,
             description: $scope.descriptionInput,
             role: $scope.roleInput,
-            uID: uID
+            uID: uID,
+            postNR: counter + uID
         });
     }
 
     postRef.on('child_added', function(snapshot) {
         var post = snapshot.val();
-        displayPosts(post.title, post.description, post.role, post.uID);
+        $scope.posts.push(post);
+        console.log(post.role,  post.description,  post.title, snapshot.key());
+        $scope.$digest();
     });
 
-    function displayPosts(title, description, role, myUID) {
-        if (myUID == uID)
-        $('<div/>').text("Looking for: " + role).prepend($('<p/>').text(description)).prepend($('<h1/>').text(title+': ')).appendTo($('#postsDiv'));
-        $('#postsDiv')[0].scrollTop = $('#postsDiv')[0].scrollHeight; //scrollbar wordt geplaatst bij eerste post op pagina
+    $scope.add = function(item)
+    {
+        console.log(item);
+        window.alert(item);
     };
 
     $scope.logout = function () {

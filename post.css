@@ -1,4 +1,4 @@
-body{background-color: 
+#lichaam{background-color: 
 #1c3f5e}
 .navbar
 {
@@ -12,7 +12,7 @@ body{background-color:
 {
 	text-align: center;
 	color: 	#5e1c1e;
-	text-shadow:-1px 0 #ad8dae, 0 2px #ad8dae, 1px 0 #ad8dae, 0 -1px #ad8dae;
+	text-shadow:-1px 0 white, 0 2px white, 1px 0 white, 0 -1px white;
 	padding: 5%;
 	font-weight: bolder;
 	font-family: 'Raleway',sans-serif;
@@ -23,9 +23,8 @@ body{background-color:
 	background-color: white;
 	border: 2px solid black;
 	padding: 5%;
-	overflow: auto;
 }
-h1
+#hoofd
 {
 	margin: 1% auto;
 	text-align: center;
@@ -36,7 +35,51 @@ h1
 	font-weight: bolder;
 	font-family: 'Raleway',sans-serif;
 }
+h2
+{
+	font-weight: bolder;
+	font-family: 'Raleway',sans-serif;
+}
 button{margin-top: 0.5%;
 margin-bottom: 0.5%;}
 input{margin-top: 0.5%;
 margin-bottom: 0.5%;}
+
+
+#listitem
+{
+	color: #3396fb;
+	list-style-type: none;
+	font-size: 200%;
+	font-family: arial;
+	font-weight: bolder;
+	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+	display: inline;
+	margin-right: 5%;
+
+}
+.postnav{
+	margin: 0% auto;
+	text-align: center;
+	background-color: #fa9732;
+	border: 1px solid black;
+	width: 80%;
+}
+
+#listitem a:hover{text-decoration: none;}
+#listitem a:active{text-decoration: none;}
+#listitem a{text-decoration: none; }
+
+
+#New
+{
+	background-color: white;
+	width: 100%;
+	padding: 5%;
+}
+#post
+{
+	background-color: white;
+	padding: 10%;
+	width: 100%;
+}
