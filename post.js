@@ -2,7 +2,7 @@
 
 var app = angular.module("myPost", []);
 
-app.controller("postController", ['$scope', function ($scope) {
+app.controller("postController", function ($scope) {
     var ref = new Firebase("https://boiling-torch-9537.firebaseio.com");
     var usersRef = ref.child("users");
 
