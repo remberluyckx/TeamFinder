@@ -123,5 +123,17 @@ $scope.deleteAccount = function(){
     });
 }
 
+	$scope.logout = function () {
+		ref.unauth();
+		$scope.user = null;
+		$scope.username = "guest";
+		console.log("logged out");
+		// google sign out
+		var auth2 = gapi.auth2.getAuthInstance();
+		auth2.signOut().then(function () {
+			console.log('User signed out.');
+		});
+	}
+
 getUserName();
 });

@@ -38,5 +38,17 @@ app.controller("postController", function ($scope) {
         $('#postsDiv')[0].scrollTop = $('#postsDiv')[0].scrollHeight; //scrollbar wordt geplaatst bij eerste post op pagina
     };
 
+    $scope.logout = function () {
+        ref.unauth();
+        $scope.user = null;
+        $scope.username = "guest";
+        console.log("logged out");
+        // google sign out
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+            console.log('User signed out.');
+        });
+    }
+
 });
 

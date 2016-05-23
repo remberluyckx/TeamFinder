@@ -14,7 +14,7 @@
 </head>
 
 <body ng-app="myProfile">
-<nav class="navbar navbar">
+<nav class="navbar navbar" ng-controller ="profileController">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <a class="navbar-brand" href="index.html">Team Assembler</a>
@@ -29,13 +29,13 @@
                     <div class="loginStatus">
                         <p ng-if="username">Logged in as: {{username}}</p>
                         <p ng-if="username==null">Update your <a href="profile.html"> profile </a></p>
-                        <a href="#" ng-click="logout()"><p >Logout</p></a>
+                        <a href="index.html" ng-click="logout()"><p >Logout</p></a>
                     </div>
                 </div>
             </nav>
 
 <h1>Profile</h1>
-<div class="main"ng-controller ="profileController">
+<div class="main" ng-controller ="profileController">
 <div>Welcome {{username}}</div>
 <p>Change profile settings</p>
 <div>
