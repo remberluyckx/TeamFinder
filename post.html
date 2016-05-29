@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="post.css">
     
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -39,9 +39,10 @@
     <div class="container">
       <h1 id="hoofd">Post</h1>
       <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#menu1">NEW POST</a></li>
-        <li><a data-toggle="tab" href="#menu2">POSTS</a></li>
-        <li><a data-toggle="tab" href="#menu3">FAVS</a></li>
+        <li class="active"><a data-toggle="tab" href="#menu1">New Post</a></li>
+        <li ><a data-toggle="tab" href="#menu2" >All Posts</a></li>
+        <li ng-click="showPosts('mine')"><a data-toggle="tab" href="#menu3">My Posts</a></li>        
+        <li><a data-toggle="tab" href="#menu4">Favourites</a></li>
       </ul>
 
         <div class="tab-content">
@@ -61,27 +62,36 @@
                 <br><button ng-click="createPost()" class="btn btn-warning">Post!</button>
                 </div>
             </div>
-            <div id="menu2" class="tab-pane fade">
-            <div id="post">
+            <div id="menu2" class="tab-pane fade post" >
+    
                 <div ng-repeat="x in posts">
-                    <span>PROJECTS:</span>
+                    <span>Projects:</span>
                     <h1>{{x.title}}</h1>
                     <p>{{x.description}}</p>
-                    <p>Looking for: {{x.role}}</p>
+                    <p>Looking for: {{x.role}}</p>                    
                     <button ng-click="add(x.postNR)">Add</button>
                     <button ng-click="contact()">Contact</button>
                 </div>
             </div>
+            <div id="menu3" class="tab-pane fade">
+            <div class = "post">
+                <div ng-repeat="x in myPosts">
+                    <span>My projects:</span>
+                    <h1>{{x.title}}</h1>
+                    <p>{{x.description}}</p>
+                    <p>Looking for: {{x.role}}</p>
+                    <p>Key: {{x.postNR}}</p>
+                    <button ng-click="deletePost(x.postNR)">delete</button>
+                </div>
+            </div>
                 
             </div>
-            <div id="menu3" class="tab-pane fade">
+            <div id="menu4" class="tab-pane fade">
                 <div class="adds">       
             </div>
         </div>
       </div>
 </div>   
-
-
 
 
 </body>

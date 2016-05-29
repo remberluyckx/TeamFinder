@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pay</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" type="text/css" href="post.css">
+    
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <script src='pay.js'></script>
+</head>
+
+<body id="lichaam" ng-app="myPayment" ng-controller ="paymentController">
+
+    <nav class="navbar navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">Team Assembler</a>
+            </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">LOGIN</a></li>
+                    <li><a href="#">PROJECTS</a></li>
+                    <li><a href="post.html">POST</a></li  > 
+                    <li><a href="profile.html">PROFILE</a></li>
+                    <li><a href="pay.html">Pay</a></li>       
+                </ul>
+        </div>
+    </nav>
+
+
+
+    <div class="container">
+      <h1 id="hoofd">Pay</h1>
+      <form action="" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_8Yt1ur8R5xZFErRxGCAJIoVN"
+    data-amount="999"
+    data-name="Team Finder"
+    data-description="Widget"
+    data-image="/img/documentation/checkout/marketplace.png"
+    data-locale="auto"
+    data-zip-code="true"
+    data-currency="eur">
+  </script>
+</form>
+    </div>  
+
+
+
+
+</body>
+</html>
+

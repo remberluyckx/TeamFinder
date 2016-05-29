@@ -84,7 +84,7 @@ app.controller("appController", function ($scope) {
                     console.log("Login Failed!", error);
                 } else {
                     uID = authData.uid;
-                    console.log("Authenticated successfully with payload:" + uID, authData);
+                    console.log("Authenticated successfully with payload:" + uID, authData);                    
                     console.log("uid: " + uID);
                     $scope.$digest();
                     getUserName();

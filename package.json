@@ -1,0 +1,27 @@
+{
+  "name": "teamfinder",
+  "version": "1.0.0",
+  "description": "teamfinder modules",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "firebase": "^2.2.1",
+    "request": "^2.72.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "require(\"express\")",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/remberluyckx/TeamFinder.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/remberluyckx/TeamFinder/issues"
+  },
+  "homepage": "https://github.com/remberluyckx/TeamFinder#readme"
+}

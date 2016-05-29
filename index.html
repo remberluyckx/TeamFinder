@@ -17,8 +17,7 @@
 </head>
 
 <body ng-app="myApp" class="main">
-		<div ng-controller="appController">
-			
+		<div ng-controller="appController">			
 			<nav class="navbar navbar">
   				<div class="container-fluid">
     				<div class="navbar-header">
@@ -29,7 +28,7 @@
 				      <li><a href="projects.html">PROJECTS</a></li>
 				      <li><a ng-if="user" href="post.html">POST</a></li> 
 				      <li ng-if="user"><a href="profile.html">PROFILE</a></li>
-				      <li><a href="#">SETTINGS</a></li> 				      				      
+				      <li ng-if="user"><a href="pay.html">PAY</a></li> 				      				      
 				    </ul>
 				    <div class="loginStatus">
 				    	<p ng-if="username">Logged in as: {{username}}</p>
@@ -38,7 +37,7 @@
 				    </div>
 				      
   				</div>
-			</nav>
+			</nav> 
 
 
 			<div class="wrapper">

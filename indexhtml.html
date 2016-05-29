@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TeamFinder</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+    
+    <meta name="google-signin-client_id" content="507749802408-tfhg18de0g0ib10i4dug7a3r5gpunrli.apps.googleusercontent.com">    
+     <script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
+
+<body ng-app="myApp" class="main">
+		<div ng-controller="appController">
+		<?php include 'includes/nav.php'; ?>
+			
+		<!--	<nav class="navbar navbar">
+  				<div class="container-fluid">
+    				<div class="navbar-header">
+      					<a class="navbar-brand" href="index.html">Team Assembler</a>
+    				</div>
+				    <ul class="nav navbar-nav">
+				      <li class="active"><a href="#">LOGIN</a></li>
+				      <li><a href="projects.html">PROJECTS</a></li>
+				      <li><a ng-if="user" href="post.html">POST</a></li> 
+				      <li ng-if="user"><a href="profile.html">PROFILE</a></li>
+				      <li><a href="#">SETTINGS</a></li> 				      				      
+				    </ul>
+				    <div class="loginStatus">
+				    	<p ng-if="username">Logged in as: {{username}}</p>
+				      	<p ng-if="username==null">Update your <a href="profile.html"> profile </a></p>
+				      	<a href="#" ng-click="logout()"><p >Logout</p></a>
+				    </div>
+				      
+  				</div>
+			</nav> -->
+
+
+			<div class="wrapper">
+				<h1 class="title">Team Assembler</h1>
+				
+				<form class="form-signin">
+					<h2 class="form-signin-heading">Please login</h2>
+					<input  ng-model="loginMail" type="text" class="form-control"  placeholder="Email Address" required="" autofocus=""></input>
+					<input ng-model="loginPassword" type="password" class="form-control"  placeholder="Password" required="" />      
+      				<label class="checkbox">
+        			<input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+      				</label>
+      				<button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="login()">Login</button>
+      				<Button class="btn btn-lg btn-primary btn-block" ng-click="register()" >Register</Button>
+      				<button ng-click="googleLogin()" >Google sign in</button>
+					<button ng-click="fblogin()">Fb login</button>
+			</div>
+
+					<div id="fb-root"></div>
+					<div class="fb-like" data-href="https://boiling-torch-9537.firebaseapp.com/" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div>
+
+        			<button id="forgotBtn">Forgot password</button><br>
+        			<input type="text" ng-model="newPassword" placeholder="New password"><br>
+       				<button id="changeBtn">Change my password</button>
+       				<input type="text" ng-model="loginMail" placeholder="E-mail address"></input>
+					<input type="text" ng-model="loginPassword" placeholder="password"></input>			
+				</form>
+					
+
+		<div class="chat">
+			<p>{{authMessage}}</p>
+			<div>Welcome {{username}}</div>
+			<input type='text' id='messageInput' placeholder='Message'></input>
+			<div id='messagesDiv'></div>
+		</div>
+
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+		<input type="hidden" name="cmd" value="_s-xclick">
+		<input type="hidden" name="hosted_button_id" value="4WFTM26S2JX5Q">
+		<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+		<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+		</form>
+	</div>
+	</body>
+
+
+<script src='app.js'></script>
+
+</body>
+</html>
