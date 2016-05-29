@@ -32,3 +32,9 @@
 .loginStatus {
     float: right;
 }
+#bannerLeft {
+    float: left;
+}
+#bannerRight {
+    float: right;
+}

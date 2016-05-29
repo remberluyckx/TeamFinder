@@ -101,3 +101,9 @@ input {
 #paySome{
 	color: white;
 }
+#bannerLeft {
+	float: left;
+}
+#bannerRight {
+	float: right;
+}

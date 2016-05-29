@@ -73,8 +73,11 @@
 	right: 0%;
 	bottom: 0%;
 }
-#banner {
+#bannerLeft {
 	float: left;
+}
+#bannerRight {
+	float: right;
 }
 #googlebtn {
 	color: #dd4b39;

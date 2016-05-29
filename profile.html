@@ -33,10 +33,12 @@
             </nav>
 
 <h1>Profile</h1>
+<iframe id="bannerLeft" src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=11&l=ez&f=ifr&linkID=5b17c007537a092d13b5cdffda46d38d&t=2006c0-20&tracking_id=2006c0-20" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+<iframe id="bannerRight" src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=11&l=ez&f=ifr&linkID=5b17c007537a092d13b5cdffda46d38d&t=2006c0-20&tracking_id=2006c0-20" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+
 <div class="main" ng-controller ="profileController">
-<h3 ng-if="username!=undefined undefined">Welcome {{username}}</h3>
-<p>Change your profile settings:</p>
-<div>
+<h3>Change your profile settings</h3>
+    <div>
     <input ng-model="user.first_name" type="text" placeholder="First name"></input>
     <input ng-model="user.last_name" type="text" placeholder="Last name"></input>
     <label for="specialty"> Specialty: </label>
