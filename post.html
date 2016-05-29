@@ -39,8 +39,9 @@
 
 
     <div class="container">
-      <h1 id="hoofd">Post</h1>
-      <ul class="nav nav-tabs">
+
+      <h1 id="hoofd">Post</h1>        
+      <ul class="nav nav-tabs ">
         <li class="active"><a data-toggle="tab" href="#menu1">New Post</a></li>
         <li  ng-click="getAllPosts()"><a data-toggle="tab" href="#menu2" >All Posts</a></li>
         <li ng-click="showPosts('mine')"><a data-toggle="tab" href="#menu3">My Posts</a></li>        
@@ -51,6 +52,9 @@
             <div id="menu1" class="tab-pane fade in active">
               <div id="New">
                     <h2>Create a post</h2><br>
+                    <div>
+          <iframe id="bannerRight" src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=11&l=ez&f=ifr&linkID=5b17c007537a092d13b5cdffda46d38d&t=2006c0-20&tracking_id=2006c0-20" width="400" height="180" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+      </div>
                     <input type="text" ng-model="titleInput" placeholder="Title"><br>
                     <textarea type="text" ng-model="descriptionInput" placeholder="Description" rows="4" cols="50"></textarea><br>
                     <label>I'm looking for a:</label>
@@ -90,6 +94,8 @@
             </div>
         </div>
       </div>
+      
+      
 </div>   
 
 
