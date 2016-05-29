@@ -1,5 +1,6 @@
 var express = require("express");
 var firebase = require("firebase");
+var stripe = require("stripe")("sk_test_9kJKYI4YAE8G9usRZtX3cqCK");
 
 
 //var ref = new Firebase("https://boiling-torch-9537.firebaseio.com");
@@ -15,19 +16,8 @@ var allUsers = "";
 
 var ref = new firebase("https://boiling-torch-9537.firebaseio.com");
 var postRef = ref.child("posts");
-/*request({
-  uri: "localhost:12060/repository/schema/fieldType",
-  method: "POST",
-  json: {
-    action: "create",
-    fieldType: {
-      name: "n$name",
-      valueType: { primitive: "STRING" },
-      scope: "versioned",
-      namespaces: { "my.demo": "n" }
-    }
-  }
-}); */
+
+
 app.use(express.static(__dirname ));
 request({
 	url:usersURL, json:true
@@ -41,10 +31,8 @@ request({
 	}
 }); 
 
-//var ref = new Firebase("https://boiling-torch-9537.firebaseio.com");
-//var rootRef = new Firebase("https://boiling-torch-9537.firebaseio.com/web/data");
-//var usersRef = rootRef.child("users.json");
-//console.info("data: " + data);
+//var stripeToken = request.body.stripeToken;
+
 console.info("users: " + allUsers);
 var lijst = null;
 	
@@ -99,8 +87,8 @@ app.delete('/fireapi/posts/:postNR', function  (req, res) {
 
 });
 
-app.get("/pay", function  (req, res) {
+app.get("/fireapi/pay", function  (req, res) {
 
-	res.send("payment page");
+	//
 });
 app.listen(3000);
