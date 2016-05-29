@@ -1,6 +1,6 @@
 {
   "name": "teamfinder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "teamfinder modules",
   "main": "server.js",
   "dependencies": {
@@ -18,7 +18,7 @@
     "type": "git",
     "url": "git+https://github.com/remberluyckx/TeamFinder.git"
   },
-  "author": "",
+  "author": "Samuel Rember Gianni",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/remberluyckx/TeamFinder/issues"
