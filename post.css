@@ -118,3 +118,7 @@ input {
 	margin-left: 40%;
 	margin-top: 6%;
 }
+#logo{display: inline;
+float: left;}
+nav ul li{padding-top: 5%;}
+#titel{margin-top: 4%; margin-left: 4%; }

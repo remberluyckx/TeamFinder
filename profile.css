@@ -46,3 +46,7 @@ margin-bottom: 0.5%;}
 #bannerRight {
 	float: right;
 }
+#logo{display: inline;
+float: left;}
+nav ul li{padding-top: 5%;}
+#teamtittle{margin-top: 10%; }
