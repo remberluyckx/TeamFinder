@@ -107,3 +107,14 @@ input {
 #bannerRight {
 	float: right;
 }
+#features {
+	color: white;
+}
+#featureList {
+	color: white;
+}
+#containerLeft {
+	float: left;
+	margin-left: 40%;
+	margin-top: 6%;
+}
