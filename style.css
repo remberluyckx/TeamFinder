@@ -77,3 +77,20 @@
 #banner {
 	float: left;
 }
+#googlebtn {
+	color: #dd4b39;
+	margin-top: 5%;
+}
+#facebookbtn {
+	margin-top: 5%;
+}
+#forgotEmail {
+	margin-top: 10%;
+}
+#fblike {
+	margin-top: 5%;
+}
+#donate {
+	float: right;
+	margin-right: 28%;
+}

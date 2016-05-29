@@ -124,5 +124,24 @@ $scope.deleteAccount = function(){
 		});
 	}
 
+	///Password change///
+	$scope.changePass = function () {
+		email = ref.getAuth().password.email;
+		password = $scope.oldPassword;
+		var newPass = $scope.newPassword;
+		ref.changePassword({
+			email: email,
+			oldPassword: password,
+			newPassword: newPass
+		}, function (error) {
+			if (error === null) {
+				console.log("Password changed successfully");
+				password = newPass;
+			} else {
+				console.log("Error changing password:", error);
+			}
+		});
+	}
+
 getUserName();
 });

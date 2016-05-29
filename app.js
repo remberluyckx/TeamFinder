@@ -107,24 +107,6 @@ app.controller("appController", function ($scope) {
         });
     }
 
-///Password change///
-    $('#changeBtn').click(function () {
-        email = $scope.loginMail;
-        password = $scope.loginPassword;
-        var newPass = $scope.newPassword;
-        ref.changePassword({
-            email: email,
-            oldPassword: password,
-            newPassword: newPass
-        }, function (error) {
-            if (error === null) {
-                console.log("Password changed successfully");
-                password = newPass;
-            } else {
-                console.log("Error changing password:", error);
-            }
-        });
-    })
 
 ////USER DELETE////
     /*$('#deleteBtn').click( function() {
@@ -143,9 +125,8 @@ app.controller("appController", function ($scope) {
      }) */
 
 ///Password reset///
-    $('#forgotBtn').click(function () {
-        email = $scope.loginMail;
-        password = $scope.loginPassword;
+    $scope.forgotPass = function () {
+        email = $scope.forgotEmail;
         ref.resetPassword({
             email: email
         }, function (error) {
@@ -155,7 +136,7 @@ app.controller("appController", function ($scope) {
                 console.log("Error sending password reset email:", error);
             }
         });
-    })
+    }
 
 // Chat system //
 

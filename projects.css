@@ -27,6 +27,7 @@
     background: white;
     width: 40%;
     margin: 0 auto 2% auto;
+    padding: 2%;
 }
 .loginStatus {
     float: right;
