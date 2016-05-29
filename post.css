@@ -52,10 +52,6 @@ input {
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
-p {
-	color: white;
-}
-
 #listitem
 {
 	color: #3396fb;
@@ -101,4 +97,7 @@ p {
 	width: 80%;
 	margin: 0 auto 2% auto;
 	padding: 3%;
+}
+#paySome{
+	color: white;
 }
