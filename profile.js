@@ -59,14 +59,6 @@ var getUserName = function(){
 	console.log("went through 2nd getUserName()");
 }
 
-$scope.showUserName = function(){
-	getUserName();
-
-	console.log("show name: ", $scope.username);
-}
- 
-
-
 // push/set userData
 $scope.saveProfile = function(){
 console.log("firstname: ", $scope.user.first_name);	
@@ -102,9 +94,6 @@ if($scope.user.specialty === null) $scope.user.specialty = "";
 					console.log("updated profile");
 				}
 	//	});			
-}
-$scope.removeProfile = function(){
-	usersRef.child(key).remove();
 }
 
 $scope.deleteAccount = function(){

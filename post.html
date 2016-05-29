@@ -31,6 +31,11 @@
                     <li><a href="profile.html">PROFILE</a></li>
                     <li><a href="#">SETTINGS</a></li>       
                 </ul>
+            <div class="loginStatus">
+                <p ng-if="username">Logged in as: {{username}}</p>
+                <p ng-if="username==null">Update your <a href="profile.html"> profile </a></p>
+                <a href="index.html" ng-click="logout()"><p >Logout</p></a>
+            </div>
         </div>
     </nav>
 
@@ -64,8 +69,7 @@
             </div>
             <div id="menu2" class="tab-pane fade post" >
     
-                <div ng-repeat="x in posts">
-                    <span>Projects:</span>
+                <div id="allposts" ng-repeat="x in posts">
                     <h1>{{x.title}}</h1>
                     <p>{{x.description}}</p>
                     <p>Looking for: {{x.role}}</p>                    

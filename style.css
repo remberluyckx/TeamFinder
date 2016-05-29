@@ -1,12 +1,16 @@
-.main{background-color: 
-#1c3f5e}
+.main {
+	background-color: #1c3f5e
+}
+
 .navbar
 {
 	background-color:	#1c5e5c;
 	border: 1px solid 	#5e1c1e;
 }
 
-.navbar li{color:#1c5e5c; }
+.navbar li {
+	color:#1c5e5c;
+}
 
 .title
 {
@@ -69,4 +73,7 @@
 	position: fixed;
 	right: 0%;
 	bottom: 0%;
+}
+#banner {
+	float: left;
 }

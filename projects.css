@@ -1,0 +1,33 @@
+.main {
+    background-color: #1c3f5e
+}
+
+.navbar
+{
+    background-color:	#1c5e5c;
+    border: 1px solid 	#5e1c1e;
+}
+
+.navbar li {
+    color:#1c5e5c;
+}
+
+
+.title
+{
+    text-align: center;
+    color: 	#5e1c1e;
+    text-shadow:-1px 0 #ad8dae, 0 2px #ad8dae, 1px 0 #ad8dae, 0 -1px #ad8dae;
+    padding: 5%;
+    font-weight: bolder;
+    font-family: 'Raleway',sans-serif;
+}
+#projectsDiv div {
+    border: 3px solid black;
+    background: white;
+    width: 40%;
+    margin: 0 auto 2% auto;
+}
+.loginStatus {
+    float: right;
+}

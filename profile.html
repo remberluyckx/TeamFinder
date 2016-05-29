@@ -20,11 +20,9 @@
                         <a class="navbar-brand" href="index.html">Team Assembler</a>
                     </div>
                     <ul class="nav navbar-nav">
-                      <li class="active"><a href="#">LOGIN</a></li>
                       <li><a href="projects.html">PROJECTS</a></li>
                       <li><a href="post.html">POST</a></li> 
-                      <li><a href="profile.html">PROFILE</a></li>
-                      <li><a href="#">SETTINGS</a></li> 
+                      <li class="active"><a href="profile.html">PROFILE</a></li>
                     </ul>
                     <div class="loginStatus">
                         <p ng-if="username">Logged in as: {{username}}</p>
@@ -36,8 +34,8 @@
 
 <h1>Profile</h1>
 <div class="main" ng-controller ="profileController">
-<div>Welcome {{username}}</div>
-<p>Change profile settings</p>
+<h3>Welcome {{username}}</h3>
+<p>Change your profile settings:</p>
 <div>
     <input ng-model="user.first_name" type="text" placeholder="First name"></input>
     <input ng-model="user.last_name" type="text" placeholder="Last name"></input>
@@ -52,19 +50,14 @@
                 <option value="Web_designer">Web designer</option>
         </select>
 </div>
-<Button class="btn btn-sm btn-primary" ng-click="saveProfile()">Save</Button>
-<Button class="btn btn-sm btn-secondary"><a href="index.html">Cancel </a></Button>
-<Button class="btn btn-sm"><a href="profile.html">Go to profile</a></Button>
-<br/>
-<button class="btn btn-sm" ng-click="deleteAccount()">Delete my account</button>
+    <Button class="btn btn-sm btn-primary" ng-click="saveProfile()">Save</Button>
         <br/>
-<input type="text" ng-model="loginPassword" placeholder="password"></input>
-    <br/>
-    <button ng-click="removeProfile()">Remove profile</button>
         <br/>
-<Button class="btn btn-sm" ng-click="showUserName()">Show name</Button><br/>
-<Button class="btn btn-sm" ng-click="changePassword()">Change password</Button>
-<input type="text" ng-model="newPassword" placeholder="New password"><br>
+    <input type="text" ng-model="loginPassword" placeholder="password"></input>
+    <button class="btn btn-sm" ng-click="deleteAccount()">Delete my account</button>
+        <br/><br>
+    <input type="text" ng-model="newPassword" placeholder="New password">
+    <Button class="btn btn-sm" ng-click="changePassword()">Change password</Button>
 
 </div>
 

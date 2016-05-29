@@ -88,6 +88,7 @@ app.controller("appController", function ($scope) {
                     console.log("uid: " + uID);
                     $scope.$digest();
                     getUserName();
+                    window.location.href = "post.html";
                 }
             });
         //$scope.$digest();
