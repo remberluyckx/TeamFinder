@@ -14,6 +14,7 @@ var allPosts ="";
 var allUsers = "";
 
 var ref = new firebase("https://boiling-torch-9537.firebaseio.com");
+var postRef = ref.child("posts");
 /*request({
   uri: "localhost:12060/repository/schema/fieldType",
   method: "POST",
@@ -84,8 +85,17 @@ app.post("/fireapi/posts/:postNR", function  (req, res) {
 });
 app.delete('/fireapi/posts/:postNR', function  (req, res) {
 	console.log("in delete api");		
-	console.log(req.body.key);
-	ref.child(req.params).remove();
+	var postnr = req.params.postNR;
+	console.log(postnr);
+	postRef.orderByChild("postNR").equalTo((postnr).toString()).on("child_added", function(snapshot)
+        {    
+        console.log("in orderByChild")       ;
+            var key = snapshot.key();
+            console.log(key);
+			postRef.child(key).remove();			
+        });
+	res.send("post deleted");
+	
 
 });
 
