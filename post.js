@@ -27,8 +27,7 @@ app.controller("postController", function ($scope, $http) {
             key = snapshot.key();
             $scope.user = snapshot.val();
             if ($scope.user) {
-                $scope.username = $scope.user.first_name + " " + $scope.user.last_name;
-                $scope.$digest();
+                $scope.username = $scope.user.first_name + " " + $scope.user.last_name;               
             }
         });    
 
@@ -70,7 +69,7 @@ app.controller("postController", function ($scope, $http) {
         });
         return counter;
     };
- /*   $scope.createPost = function(){
+   $scope.createPost = function(){
     var newPost = {
        title: $scope.titleInput,
        description: $scope.descriptionInput,
@@ -78,18 +77,22 @@ app.controller("postController", function ($scope, $http) {
        uID: uID,
        postNR: uID + "_" + countPosts()
     };
+        $scope.titleInput = "";
+        $scope.descriptionInput = "";
+        $scope.roleInput = "";        
         console.log("in create post"); 
         console.log(newPost);
         $http.post("http://localhost:3000/fireapi/posts/" + newPost.postNR, newPost)
         .then(function(newPost){
              
             console.log("new post added" );
-            console.log(newPost);            
+            console.log(newPost);           
+            $scope.$apply(); 
         })
         .catch(function(err){       
             console.log("post niet gelukt", err);
         });
-    }  */
+    }  
     $scope.deletePost = function(args){
         postRef.orderByChild("postNR").equalTo(args.toString()).on("child_added", function(snapshot)
         {           
@@ -115,7 +118,7 @@ app.controller("postController", function ($scope, $http) {
       
     }
 
-    $scope.createPost = function(){
+ /*   $scope.createPost = function(){
 
         postRef.push({
             title: $scope.titleInput,
@@ -124,7 +127,8 @@ app.controller("postController", function ($scope, $http) {
             uID: uID,
             postNR: uID+"_"+ countPosts()
         });
-    } 
+        $scope.$apply();
+    }  */
 
    /* postRef.on('child_added', function(snapshot) {
         var post = snapshot.val();
@@ -152,7 +156,7 @@ app.controller("postController", function ($scope, $http) {
         
         //$scope.$digest();
         $scope.$apply();
-    });
+    });        
     }
 
     $scope.add = function(item)

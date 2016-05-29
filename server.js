@@ -82,9 +82,7 @@ app.delete('/fireapi/posts/:postNR', function  (req, res) {
             console.log(key);
 			postRef.child(key).remove();			
         });
-	res.send("post deleted");
-	
-
+	res.send("post deleted");	
 });
 
 app.post("/pay", function  (req, res) {
@@ -105,6 +103,5 @@ app.post("/pay", function  (req, res) {
 	  	res.send("payment complete");
 	  }	  
 	});	
-
 });
 app.listen(3000);

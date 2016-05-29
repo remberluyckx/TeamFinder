@@ -24,7 +24,7 @@
       					<a class="navbar-brand" href="index.html">Team Assembler</a>
     				</div>
 				    <ul class="nav navbar-nav">
-				      <li><a href="projects.html">PROJECTS</a></li>
+				      <li ng-if="username=='guest'"><a href="projects.html">PROJECTS</a></li>
 				      <li><a ng-if="user" href="post.html">POST</a></li> 
 				      <li ng-if="user"><a href="profile.html">PROFILE</a></li>
 				      <li ng-if="user"><a href="pay.html">PAY</a></li> 				      				      
