@@ -2,7 +2,7 @@
 
 var app = angular.module("projects", []);
 
-app.controller("projectsController", function ($scope) {
+app.controller("projectsController", function ($scope, $http) {
     var ref = new Firebase("https://boiling-torch-9537.firebaseio.com");
     var usersRef = ref.child("users");
 
@@ -17,29 +17,20 @@ app.controller("projectsController", function ($scope) {
 
     var postRef = ref.child("posts");
 
-    postRef.on('child_added', function(snapshot) {
+    /*postRef.on('child_added', function(snapshot) {
         var post = snapshot.val();
         displayPosts(post.title, post.description, post.role, post.uID);
+    }); */
+
+    $http.get("http://localhost:3000/fireapi/posts")
+    .success(function(posts){
+        $scope.posts = posts;         
+        console.log(posts);   
+        //filterMyPosts(); 
+    })
+    .error(function(err){       
+        console.log("Node server niet opgestart");
     });
-
-    function displayPosts(title, description, role, myUID) {
-        //if (myUID == uID)
-        $('<div/>').text("Looking for: " + role).prepend($('<p/>').text(description)).
-        prepend($('<h1/>').text(title+': ')).appendTo($('#projectsDiv'));
-        $('#projectsDiv')[0].scrollTop = $('#projectsDiv')[0].scrollHeight; //scrollbar wordt geplaatst bij eerste post op pagina
-    };
-
-    $scope.logout = function () {
-        ref.unauth();
-        $scope.user = null;
-        $scope.username = "guest";
-        console.log("logged out");
-        // google sign out
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-            console.log('User signed out.');
-        });
-    }
 
 });
 

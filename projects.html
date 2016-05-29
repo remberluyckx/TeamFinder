@@ -23,15 +23,21 @@
                       <li><a href="projects.html">PROJECTS</a></li>
                     </ul>
                     <div class="loginStatus">
-                        <p ng-if="username">Logged in as: {{username}}</p>
-                        <p ng-if="username==null">Update your <a href="profile.html"> profile </a></p>
-                        <a href="#" ng-click="logout()"><p >Logout</p></a>
+                        <p>Logged in as guest</p>
+                        <a href="/"><p >Sign in</p></a>
                     </div>
                 </div>
             </nav>
 <div class="main" ng-controller ="projectsController">
     <h1 class="title">Projects</h1>
-    <div id="projectsDiv"></div>
+    <div id="projectsDiv">
+    
+                <div id="allposts" ng-repeat="x in posts">
+                    <h1>{{x.title}}</h1>
+                    <p>{{x.description}}</p>
+                    <p>Looking for: {{x.role}}</p>                    
+                </div>
+    </div>
 </div>
 </body>
 </html>

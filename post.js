@@ -11,6 +11,7 @@ app.controller("postController", function ($scope, $http) {
     $scope.roleInput = "";
     $scope.posts = [];
     $scope.myPosts = [];
+    $scope.username = "";
 
     //tabs voor navigatie
 
@@ -21,6 +22,15 @@ app.controller("postController", function ($scope, $http) {
 
     console.log("uid:" , uID);
 
+  // get username
+        usersRef.orderByChild("uid").equalTo(uID.toString()).on("child_added", function (snapshot) {
+            key = snapshot.key();
+            $scope.user = snapshot.val();
+            if ($scope.user) {
+                $scope.username = $scope.user.first_name + " " + $scope.user.last_name;
+                $scope.$digest();
+            }
+        });    
 
 
     var postRef = ref.child("posts");

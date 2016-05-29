@@ -32,7 +32,8 @@
 				    <div class="loginStatus">
 				    	<p ng-if="username">Logged in as: {{username}}</p>
 				      	<p ng-if="username==null">Update your <a href="profile.html"> profile </a></p>
-				      	<a href="#" ng-click="logout()"><p >Logout</p></a>
+				      	<a ng-show="username != 'guest'" href="#" ng-click="logout()"><p >Logout</p></a>
+				      	<a ng-show="username == 'guest'" href="/" ><p>Sign in</p></a>
 				    </div>
 				      
   				</div>
