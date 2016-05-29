@@ -31,7 +31,7 @@ request({
 	}
 }); 
 
-//var stripeToken = request.body.stripeToken;
+app.use(bodyParser.urlencoded({extended: true}));
 
 console.info("users: " + allUsers);
 var lijst = null;
@@ -87,8 +87,24 @@ app.delete('/fireapi/posts/:postNR', function  (req, res) {
 
 });
 
-app.get("/fireapi/pay", function  (req, res) {
+app.post("/pay", function  (req, res) {
 
-	//
+	var stripeToken = req.body.stripeToken;	
+	console.log("Stripe token: ", stripeToken);		
+	//res.send("This is the damn token: " + req.body.stripeToken);
+	var charge = stripe.charges.create({
+	  amount: 1000, // amount in cents
+	  currency: "eur",
+	  source: stripeToken,
+	  description: "Example charge"
+	}, function(err, charge) {
+	  if (err && err.type === 'StripeCardError') {
+	    console.log("card declined");
+	  }
+	  else{
+	  	res.send("payment complete");
+	  }	  
+	});	
+
 });
 app.listen(3000);

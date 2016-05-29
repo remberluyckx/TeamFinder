@@ -1,8 +1,8 @@
 
-var stripeFire = require("stripe-fire")("sk_test_BQokikJOvBiI2HlWgH4olfQ2");
-var chargesRef = new Firebase("https://boiling-torch-9537.firebaseio.com/charges");
+//var stripeFire = require("stripe-fire")("sk_test_BQokikJOvBiI2HlWgH4olfQ2");
+//var chargesRef = new Firebase("https://boiling-torch-9537.firebaseio.com/charges");
 
-var charges = stripeFire.charges("https://boiling-torch-9537.firebaseio.com/charges", function(err, charge) {
+/*var charges = stripeFire.charges("https://boiling-torch-9537.firebaseio.com/charges", function(err, charge) {
     // Called after a create/update charge request is sent to Stripe 
 }, "ACCESS_TOKEN", function(chargeData) {
     // Called before a create/update charge request is sent to Stripe 
@@ -22,4 +22,18 @@ chargesRef.push({
 // Update a charge 
 chargesRef.child("ChargeName").update({
     description: "Updating description"
+}); */
+/*$(document).ready(function(){
+   var $form = $('form');   
+   $form.submit(function(){
+      $.post($(this).attr('action'), $(this).serialize(), function(response){
+            console.log("yay", response);
+      },'json');
+      return false;
+   });
+}); */
+var app = angular.module("myPayment", []);
+
+app.controller("paymentController", function ($scope, $http) {        
+
 });

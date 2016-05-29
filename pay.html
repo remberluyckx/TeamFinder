@@ -17,7 +17,7 @@
     <script src='pay.js'></script>
 </head>
 
-<body id="lichaam" ng-app="myPayment" ng-controller ="paymentController">
+<body id="lichaam" >
 
     <nav class="navbar navbar">
         <div class="container-fluid">
@@ -38,14 +38,14 @@
 
     <div class="container">
       <h1 id="hoofd">Pay</h1>
-<form action="stripeToken" method="POST">
+<form action="/pay" method="POST">
   <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="pk_test_8Yt1ur8R5xZFErRxGCAJIoVN"
-    data-amount="999"
+    data-amount="1000"
     data-name="Team Finder"
     data-description="Widget"
-    data-image="/img/documentation/checkout/marketplace.png"
+   
     data-locale="auto"
     data-zip-code="true"
     data-currency="eur">
