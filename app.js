@@ -32,7 +32,7 @@ app.controller("appController", function ($scope) {
         usersRef.orderByChild("uid").equalTo(uID.toString()).on("child_added", function (snapshot) {
             key = snapshot.key();
             $scope.user = snapshot.val();
-        });
+        });    
     }
 
 
@@ -208,7 +208,7 @@ app.controller("appController", function ($scope) {
                     $scope.username = authData.google.displayName;
 
                     getUser();
-                    $scope.$apply();
+                    window.location.href = "post.html";
                     // getGoogleUserName();
                 }
 
@@ -217,8 +217,9 @@ app.controller("appController", function ($scope) {
                 remember: "sessionOnly",
                 scope: "email"
             }
-        );
 
+        );
+         //$scope.$apply();        
     };
     var addGoogleUser = function (profile) {
         usersRef.push({

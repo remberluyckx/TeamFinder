@@ -42,7 +42,7 @@
       <h1 id="hoofd">Post</h1>
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#menu1">New Post</a></li>
-        <li ><a data-toggle="tab" href="#menu2" >All Posts</a></li>
+        <li  ng-click="getAllPosts()"><a data-toggle="tab" href="#menu2" >All Posts</a></li>
         <li ng-click="showPosts('mine')"><a data-toggle="tab" href="#menu3">My Posts</a></li>        
         <li><a data-toggle="tab" href="#menu4">Favourites</a></li>
       </ul>
@@ -76,8 +76,9 @@
             </div>
             <div id="menu3" class="tab-pane fade">
             <div class = "post">
+            <span>My projects:</span>
                 <div ng-repeat="x in myPosts">
-                    <span>My projects:</span>
+                    
                     <h1>{{x.title}}</h1>
                     <p>{{x.description}}</p>
                     <p>Looking for: {{x.role}}</p>                    

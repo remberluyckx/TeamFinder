@@ -25,7 +25,8 @@ app.controller("postController", function ($scope, $http) {
 
     var postRef = ref.child("posts");
 
-    $http.get("http://localhost:3000/fireapi/posts")
+    $scope.getAllPosts = function(){
+        $http.get("http://localhost:3000/fireapi/posts")
     .success(function(posts){
         $scope.posts = posts;         
         console.log(posts);   
@@ -34,6 +35,8 @@ app.controller("postController", function ($scope, $http) {
     .error(function(err){       
         console.log("Node server niet opgestart");
     });
+    }
+    
 
     $scope.filterMyPosts = function(){
         console.log("in my posts filter");        
@@ -57,7 +60,7 @@ app.controller("postController", function ($scope, $http) {
         });
         return counter;
     };
-    $scope.createPost = function(){
+ /*   $scope.createPost = function(){
     var newPost = {
        title: $scope.titleInput,
        description: $scope.descriptionInput,
@@ -71,12 +74,12 @@ app.controller("postController", function ($scope, $http) {
         .then(function(newPost){
              
             console.log("new post added" );
-            console.log(newPost);
+            console.log(newPost);            
         })
         .catch(function(err){       
             console.log("post niet gelukt", err);
         });
-    } 
+    }  */
     $scope.deletePost = function(args){
         postRef.orderByChild("postNR").equalTo(args.toString()).on("child_added", function(snapshot)
         {           
@@ -102,16 +105,16 @@ app.controller("postController", function ($scope, $http) {
       
     }
 
-   /* $scope.createPost = function(){
+    $scope.createPost = function(){
 
         postRef.push({
             title: $scope.titleInput,
             description: $scope.descriptionInput,
             role: $scope.roleInput,
             uID: uID,
-            postNR: counter + uID
+            postNR: uID+"_"+ countPosts()
         });
-    } */
+    } 
 
    /* postRef.on('child_added', function(snapshot) {
         var post = snapshot.val();
@@ -137,7 +140,8 @@ app.controller("postController", function ($scope, $http) {
                 $scope.posts.push(post);    
             }c*/                    
         
-        $scope.$digest();
+        //$scope.$digest();
+        $scope.$apply();
     });
     }
 
